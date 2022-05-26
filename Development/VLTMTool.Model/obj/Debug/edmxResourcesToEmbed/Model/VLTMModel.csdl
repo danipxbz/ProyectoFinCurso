@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VLTMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="temp_vTechnicalUsers">
+    <Key>
+      <PropertyRef Name="IdTechnical" />
+    </Key>
+    <Property Name="IdTechnical" Type="Int32" Nullable="false" />
+    <Property Name="TechnicalUser" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TechnicalName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketsAccessHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="AccessDate" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="AccessDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccessActivity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tickets" Relationship="VLTMModel.FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket" FromRole="TicketsAccessHistory" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="TicketsExceptionInfo">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="ExceptionMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExceptionTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tickets" Relationship="VLTMModel.FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket" FromRole="TicketsExceptionInfo" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="TicketsMessagesHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="MessageDate" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="MessageDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tickets" Relationship="VLTMModel.FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket" FromRole="TicketsMessagesHistory" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="TicketsStatusHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="StatusDate" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="StatusDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdStatus" Type="Int32" Nullable="false" />
+    <Property Name="User" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AsignedTo" Type="Int32" />
+    <Property Name="ResolvedVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TicketStatus" Relationship="Self.FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus" FromRole="TicketsStatusHistory" ToRole="TicketStatus" />
+    <Property Name="TimeForResolved" Type="Double" />
+    <NavigationProperty Name="Tickets" Relationship="VLTMModel.FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket" FromRole="TicketsStatusHistory" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="TicketStatus">
+    <Key>
+      <PropertyRef Name="IdStatus" />
+    </Key>
+    <Property Name="IdStatus" Type="Int32" Nullable="false" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TicketsStatusHistory" Relationship="Self.FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus" FromRole="TicketStatus" ToRole="TicketsStatusHistory" />
+  </EntityType>
+  <EntityType Name="TicketTypes">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus">
+    <End Role="TicketStatus" Type="Self.TicketStatus" Multiplicity="1" />
+    <End Role="TicketsStatusHistory" Type="Self.TicketsStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketStatus">
+        <PropertyRef Name="IdStatus" />
+      </Principal>
+      <Dependent Role="TicketsStatusHistory">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VLTMModelConnection" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="temp_vTechnicalUsers" EntityType="Self.temp_vTechnicalUsers" />
+    <EntitySet Name="TicketsAccessHistory" EntityType="Self.TicketsAccessHistory" />
+    <EntitySet Name="TicketsExceptionInfo" EntityType="Self.TicketsExceptionInfo" />
+    <EntitySet Name="TicketsMessagesHistory" EntityType="Self.TicketsMessagesHistory" />
+    <EntitySet Name="TicketsStatusHistory" EntityType="Self.TicketsStatusHistory" />
+    <EntitySet Name="TicketStatus" EntityType="Self.TicketStatus" />
+    <EntitySet Name="TicketTypes" EntityType="Self.TicketTypes" />
+    <AssociationSet Name="FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus" Association="Self.FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus">
+      <End Role="TicketStatus" EntitySet="TicketStatus" />
+      <End Role="TicketsStatusHistory" EntitySet="TicketsStatusHistory" />
+    </AssociationSet>
+    <EntitySet Name="vTickets" EntityType="VLTMModel.vTickets" />
+    <EntitySet Name="vTicketsStatusHistory" EntityType="VLTMModel.vTicketsStatusHistory" />
+    <EntitySet Name="vTHORApplications" EntityType="VLTMModel.vTHORApplications" />
+    <EntitySet Name="vTHOREmployes" EntityType="VLTMModel.vTHOREmployes" />
+    <EntitySet Name="vTHORApplicationSections" EntityType="VLTMModel.vTHORApplicationSections" />
+    <EntitySet Name="Tickets" EntityType="VLTMModel.Tickets" />
+    <AssociationSet Name="FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket" Association="VLTMModel.FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsAccessHistory" EntitySet="TicketsAccessHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket" Association="VLTMModel.FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsExceptionInfo" EntitySet="TicketsExceptionInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket" Association="VLTMModel.FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsMessagesHistory" EntitySet="TicketsMessagesHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket" Association="VLTMModel.FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsStatusHistory" EntitySet="TicketsStatusHistory" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="vTickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="TicketDate" />
+      <PropertyRef Name="IdType" />
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="User" />
+      <PropertyRef Name="AppVersion" />
+      <PropertyRef Name="IdSection" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="TicketDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdType" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AppCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AppName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="User" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PriorityLevel" Type="Int32" />
+    <Property Name="AppVersion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdStatus" Type="Int32" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="47" FixedLength="false" Unicode="true" />
+    <Property Name="IdSection" Type="Int32" Nullable="false" />
+    <Property Name="AppSectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vTicketsStatusHistory">
+    <Key>
+      <PropertyRef Name="StatusDate" />
+      <PropertyRef Name="User" />
+      <PropertyRef Name="StatusName" />
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="IdStatus" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="StatusDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AsignedTo" Type="Int32" />
+    <Property Name="ResolvedVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdTicket" Type="Int32" Nullable="false" />
+    <Property Name="IdStatus" Type="Int32" Nullable="false" />
+    <Property Name="Expr1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vTHORApplications">
+    <Key>
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="AppName" />
+      <PropertyRef Name="AppDelete" />
+    </Key>
+    <Property Name="AppCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AppName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AppDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AppDelete" Type="Boolean" Nullable="false" />
+    <Property Name="AppVersion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="AppInstaller" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AppRoute" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vTHOREmployes">
+    <Key>
+      <PropertyRef Name="EmployeeNumber" />
+      <PropertyRef Name="Surname" />
+    </Key>
+    <Property Name="EmployeeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Subdepartment" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="AllowImputation" Type="Boolean" />
+    <Property Name="HolidaysCalendar" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="vTHORApplicationSections">
+    <Key>
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="IdSection" />
+      <PropertyRef Name="AppSectionName" />
+    </Key>
+    <Property Name="AppCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IdSection" Type="Int32" Nullable="false" />
+    <Property Name="AppSectionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AppSectionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdType" Type="Int32" Nullable="false" />
+    <Property Name="AppCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdSection" Type="Int32" Nullable="false" />
+    <Property Name="AppVersion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SourceIdentification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PriorityLevel" Type="Int32" />
+    <Property Name="PriorityAsignedTo" Type="Int32" />
+    <Property Name="AsignedTo" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ImageFile1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ImageFile2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ImageFile3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ImageFile4" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TicketsAccessHistory" Relationship="VLTMModel.FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket" FromRole="Tickets" ToRole="TicketsAccessHistory" />
+    <NavigationProperty Name="TicketsExceptionInfo" Relationship="VLTMModel.FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket" FromRole="Tickets" ToRole="TicketsExceptionInfo" />
+    <NavigationProperty Name="TicketsMessagesHistory" Relationship="VLTMModel.FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket" FromRole="Tickets" ToRole="TicketsMessagesHistory" />
+    <NavigationProperty Name="TicketsStatusHistory" Relationship="VLTMModel.FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket" FromRole="Tickets" ToRole="TicketsStatusHistory" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket">
+    <End Type="VLTMModel.Tickets" Role="Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="VLTMModel.TicketsAccessHistory" Role="TicketsAccessHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsAccessHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket">
+    <End Type="VLTMModel.Tickets" Role="Tickets" Multiplicity="1" />
+    <End Type="VLTMModel.TicketsExceptionInfo" Role="TicketsExceptionInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsExceptionInfo">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket">
+    <End Type="VLTMModel.Tickets" Role="Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="VLTMModel.TicketsMessagesHistory" Role="TicketsMessagesHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsMessagesHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket">
+    <End Type="VLTMModel.Tickets" Role="Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="VLTMModel.TicketsStatusHistory" Role="TicketsStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsStatusHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

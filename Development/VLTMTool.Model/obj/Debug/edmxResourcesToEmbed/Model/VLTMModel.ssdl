@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VLTMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="temp_vTechnicalUsers">
+    <Key>
+      <PropertyRef Name="IdTechnical" />
+    </Key>
+    <Property Name="IdTechnical" Type="int" Nullable="false" />
+    <Property Name="TechnicalUser" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="TechnicalName" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketDate" Type="datetime" Nullable="false" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="AppCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdSection" Type="int" Nullable="false" />
+    <Property Name="AppVersion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SourceIdentification" Type="nvarchar(max)" />
+    <Property Name="PriorityLevel" Type="int" />
+    <Property Name="PriorityAsignedTo" Type="int" />
+    <Property Name="AsignedTo" Type="int" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ImageFile1" Type="varchar" MaxLength="256" />
+    <Property Name="ImageFile2" Type="varchar" MaxLength="256" />
+    <Property Name="ImageFile3" Type="varchar" MaxLength="256" />
+    <Property Name="ImageFile4" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="TicketsAccessHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="AccessDate" />
+    </Key>
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="AccessDate" Type="datetime" Nullable="false" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="AccessActivity" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketsExceptionInfo">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="ExceptionMessage" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="ExceptionTrace" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketsMessagesHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="MessageDate" />
+    </Key>
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="MessageDate" Type="datetime" Nullable="false" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="1500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketsStatusHistory">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="StatusDate" />
+    </Key>
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="StatusDate" Type="datetime" Nullable="false" />
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="AsignedTo" Type="int" />
+    <Property Name="ResolvedVersion" Type="varchar" MaxLength="20" />
+    <Property Name="TimeForResolved" Type="float" />
+  </EntityType>
+  <EntityType Name="TicketStatus">
+    <Key>
+      <PropertyRef Name="IdStatus" />
+    </Key>
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketTypes">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VirtualLabTM.dbo.vTHORApplications' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vTHORApplications">
+    <Key>
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="AppName" />
+      <PropertyRef Name="AppDelete" />
+    </Key>
+    <Property Name="AppCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AppName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AppDescription" Type="nvarchar(max)" />
+    <Property Name="AppDelete" Type="bit" Nullable="false" />
+    <Property Name="AppVersion" Type="nvarchar" MaxLength="15" />
+    <Property Name="AppInstaller" Type="nvarchar" MaxLength="256" />
+    <Property Name="AppRoute" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VirtualLabTM.dbo.vTHORApplicationSections' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vTHORApplicationSections">
+    <Key>
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="IdSection" />
+      <PropertyRef Name="AppSectionName" />
+    </Key>
+    <Property Name="AppCode" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdSection" Type="int" Nullable="false" />
+    <Property Name="AppSectionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AppSectionDescription" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VirtualLabTM.dbo.vTHOREmployes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vTHOREmployes">
+    <Key>
+      <PropertyRef Name="EmployeeNumber" />
+      <PropertyRef Name="Surname" />
+    </Key>
+    <Property Name="EmployeeCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmployeeNumber" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="15" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="31" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="2" />
+    <Property Name="Subdepartment" Type="nvarchar" MaxLength="2" />
+    <Property Name="Email" Type="nvarchar" MaxLength="120" />
+    <Property Name="AllowImputation" Type="bit" />
+    <Property Name="HolidaysCalendar" Type="char" MaxLength="12" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VirtualLabTM.dbo.vTickets' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vTickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="TicketDate" />
+      <PropertyRef Name="IdType" />
+      <PropertyRef Name="AppCode" />
+      <PropertyRef Name="IdSection" />
+      <PropertyRef Name="User" />
+      <PropertyRef Name="AppVersion" />
+    </Key>
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="TicketDate" Type="datetime" Nullable="false" />
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="25" />
+    <Property Name="AppCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AppName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdSection" Type="int" Nullable="false" />
+    <Property Name="AppSectionName" Type="nvarchar" MaxLength="100" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="47" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="4000" />
+    <Property Name="PriorityLevel" Type="int" />
+    <Property Name="AppVersion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdStatus" Type="int" />
+    <Property Name="StatusName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VirtualLabTM.dbo.vTicketsStatusHistory' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vTicketsStatusHistory">
+    <Key>
+      <PropertyRef Name="StatusDate" />
+      <PropertyRef Name="User" />
+      <PropertyRef Name="StatusName" />
+      <PropertyRef Name="IdTicket" />
+      <PropertyRef Name="IdStatus" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="StatusDate" Type="datetime" Nullable="false" />
+    <Property Name="User" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AsignedTo" Type="int" />
+    <Property Name="ResolvedVersion" Type="varchar" MaxLength="20" />
+    <Property Name="IdTicket" Type="int" Nullable="false" />
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketsAccessHistory" Type="Self.TicketsAccessHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsAccessHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+    <End Role="TicketsExceptionInfo" Type="Self.TicketsExceptionInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsExceptionInfo">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketsMessagesHistory" Type="Self.TicketsMessagesHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsMessagesHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus">
+    <End Role="TicketStatus" Type="Self.TicketStatus" Multiplicity="1" />
+    <End Role="TicketsStatusHistory" Type="Self.TicketsStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketStatus">
+        <PropertyRef Name="IdStatus" />
+      </Principal>
+      <Dependent Role="TicketsStatusHistory">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TicketsStatusHistory" Type="Self.TicketsStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="TicketsStatusHistory">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VLTMModelStoreContainer">
+    <EntitySet Name="temp_vTechnicalUsers" EntityType="Self.temp_vTechnicalUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketsAccessHistory" EntityType="Self.TicketsAccessHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketsExceptionInfo" EntityType="Self.TicketsExceptionInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketsMessagesHistory" EntityType="Self.TicketsMessagesHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketsStatusHistory" EntityType="Self.TicketsStatusHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketStatus" EntityType="Self.TicketStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketTypes" EntityType="Self.TicketTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vTHORApplications" EntityType="Self.vTHORApplications" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTHORApplications].[AppCode] AS [AppCode], 
+    [vTHORApplications].[AppName] AS [AppName], 
+    [vTHORApplications].[AppDescription] AS [AppDescription], 
+    [vTHORApplications].[AppDelete] AS [AppDelete], 
+    [vTHORApplications].[AppVersion] AS [AppVersion], 
+    [vTHORApplications].[AppInstaller] AS [AppInstaller], 
+    [vTHORApplications].[AppRoute] AS [AppRoute]
+    FROM [dbo].[vTHORApplications] AS [vTHORApplications]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTHORApplicationSections" EntityType="Self.vTHORApplicationSections" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTHORApplicationSections].[AppCode] AS [AppCode], 
+    [vTHORApplicationSections].[IdSection] AS [IdSection], 
+    [vTHORApplicationSections].[AppSectionName] AS [AppSectionName], 
+    [vTHORApplicationSections].[AppSectionDescription] AS [AppSectionDescription]
+    FROM [dbo].[vTHORApplicationSections] AS [vTHORApplicationSections]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTHOREmployes" EntityType="Self.vTHOREmployes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTHOREmployes].[EmployeeCode] AS [EmployeeCode], 
+    [vTHOREmployes].[EmployeeNumber] AS [EmployeeNumber], 
+    [vTHOREmployes].[Name] AS [Name], 
+    [vTHOREmployes].[Surname] AS [Surname], 
+    [vTHOREmployes].[Department] AS [Department], 
+    [vTHOREmployes].[Subdepartment] AS [Subdepartment], 
+    [vTHOREmployes].[Email] AS [Email], 
+    [vTHOREmployes].[AllowImputation] AS [AllowImputation], 
+    [vTHOREmployes].[HolidaysCalendar] AS [HolidaysCalendar], 
+    [vTHOREmployes].[Active] AS [Active]
+    FROM [dbo].[vTHOREmployes] AS [vTHOREmployes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTickets" EntityType="Self.vTickets" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTickets].[IdTicket] AS [IdTicket], 
+    [vTickets].[TicketDate] AS [TicketDate], 
+    [vTickets].[IdType] AS [IdType], 
+    [vTickets].[TypeName] AS [TypeName], 
+    [vTickets].[AppCode] AS [AppCode], 
+    [vTickets].[AppName] AS [AppName], 
+    [vTickets].[IdSection] AS [IdSection], 
+    [vTickets].[AppSectionName] AS [AppSectionName], 
+    [vTickets].[User] AS [User], 
+    [vTickets].[Name] AS [Name], 
+    [vTickets].[Subject] AS [Subject], 
+    [vTickets].[Comment] AS [Comment], 
+    [vTickets].[PriorityLevel] AS [PriorityLevel], 
+    [vTickets].[AppVersion] AS [AppVersion], 
+    [vTickets].[IdStatus] AS [IdStatus], 
+    [vTickets].[StatusName] AS [StatusName]
+    FROM [dbo].[vTickets] AS [vTickets]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTicketsStatusHistory" EntityType="Self.vTicketsStatusHistory" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTicketsStatusHistory].[StatusDate] AS [StatusDate], 
+    [vTicketsStatusHistory].[User] AS [User], 
+    [vTicketsStatusHistory].[StatusName] AS [StatusName], 
+    [vTicketsStatusHistory].[AsignedTo] AS [AsignedTo], 
+    [vTicketsStatusHistory].[ResolvedVersion] AS [ResolvedVersion], 
+    [vTicketsStatusHistory].[IdTicket] AS [IdTicket], 
+    [vTicketsStatusHistory].[IdStatus] AS [IdStatus], 
+    [vTicketsStatusHistory].[Expr1] AS [Expr1]
+    FROM [dbo].[vTicketsStatusHistory] AS [vTicketsStatusHistory]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket" Association="Self.FK_TicketsAccessHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsAccessHistory" EntitySet="TicketsAccessHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket" Association="Self.FK_TicketsExceptionInfo_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsExceptionInfo" EntitySet="TicketsExceptionInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket" Association="Self.FK_TicketsMessagesHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsMessagesHistory" EntitySet="TicketsMessagesHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus" Association="Self.FK_TicketsStatusHistory_IdStsatus_TicketStatus_IdStatus">
+      <End Role="TicketStatus" EntitySet="TicketStatus" />
+      <End Role="TicketsStatusHistory" EntitySet="TicketsStatusHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket" Association="Self.FK_TicketsStatusHistory_IdTicket_Tickets_IdTicket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketsStatusHistory" EntitySet="TicketsStatusHistory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

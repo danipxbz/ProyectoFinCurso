@@ -1,0 +1,11 @@
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\VLTMTool.ViewModel.dll.config
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\VLTMTool.ViewModel.dll
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\VLTMTool.ViewModel.pdb
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\AutoMapper.dll
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\AutoMapper.pdb
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\bin\Debug\AutoMapper.xml
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\obj\Debug\VLTMTool.ViewModel.csproj.AssemblyReference.cache
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\obj\Debug\VLTMTool.ViewModel.csproj.CoreCompileInputs.cache
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\obj\Debug\VLTMTool.ViewModel.csproj.CopyComplete
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\obj\Debug\VLTMTool.ViewModel.dll
+C:\Fuentes\VLTMTool\Repo\Development\VLTMTool\VLTMTool.ViewModel\obj\Debug\VLTMTool.ViewModel.pdb

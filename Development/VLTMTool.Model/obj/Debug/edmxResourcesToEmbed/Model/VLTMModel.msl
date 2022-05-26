@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VLTMModelStoreContainer" CdmEntityContainer="VLTMModelConnection">
+    <EntitySetMapping Name="temp_vTechnicalUsers">
+      <EntityTypeMapping TypeName="VLTMModel.temp_vTechnicalUsers">
+        <MappingFragment StoreEntitySet="temp_vTechnicalUsers">
+          <ScalarProperty Name="IdTechnical" ColumnName="IdTechnical" />
+          <ScalarProperty Name="TechnicalUser" ColumnName="TechnicalUser" />
+          <ScalarProperty Name="TechnicalName" ColumnName="TechnicalName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketsAccessHistory">
+      <EntityTypeMapping TypeName="VLTMModel.TicketsAccessHistory">
+        <MappingFragment StoreEntitySet="TicketsAccessHistory">
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+          <ScalarProperty Name="AccessDate" ColumnName="AccessDate" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="AccessActivity" ColumnName="AccessActivity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketsExceptionInfo">
+      <EntityTypeMapping TypeName="VLTMModel.TicketsExceptionInfo">
+        <MappingFragment StoreEntitySet="TicketsExceptionInfo">
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+          <ScalarProperty Name="ExceptionMessage" ColumnName="ExceptionMessage" />
+          <ScalarProperty Name="ExceptionTrace" ColumnName="ExceptionTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketsMessagesHistory">
+      <EntityTypeMapping TypeName="VLTMModel.TicketsMessagesHistory">
+        <MappingFragment StoreEntitySet="TicketsMessagesHistory">
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketsStatusHistory">
+      <EntityTypeMapping TypeName="VLTMModel.TicketsStatusHistory">
+        <MappingFragment StoreEntitySet="TicketsStatusHistory">
+          <ScalarProperty Name="TimeForResolved" ColumnName="TimeForResolved" />
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+          <ScalarProperty Name="StatusDate" ColumnName="StatusDate" />
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="AsignedTo" ColumnName="AsignedTo" />
+          <ScalarProperty Name="ResolvedVersion" ColumnName="ResolvedVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketStatus">
+      <EntityTypeMapping TypeName="VLTMModel.TicketStatus">
+        <MappingFragment StoreEntitySet="TicketStatus">
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketTypes">
+      <EntityTypeMapping TypeName="VLTMModel.TicketTypes">
+        <MappingFragment StoreEntitySet="TicketTypes">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTickets">
+      <EntityTypeMapping TypeName="VLTMModel.vTickets">
+        <MappingFragment StoreEntitySet="vTickets">
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="AppSectionName" ColumnName="AppSectionName" />
+          <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="PriorityLevel" ColumnName="PriorityLevel" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="TicketDate" ColumnName="TicketDate" />
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTicketsStatusHistory">
+      <EntityTypeMapping TypeName="VLTMModel.vTicketsStatusHistory">
+        <MappingFragment StoreEntitySet="vTicketsStatusHistory">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+          <ScalarProperty Name="ResolvedVersion" ColumnName="ResolvedVersion" />
+          <ScalarProperty Name="AsignedTo" ColumnName="AsignedTo" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="StatusDate" ColumnName="StatusDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTHORApplications">
+      <EntityTypeMapping TypeName="VLTMModel.vTHORApplications">
+        <MappingFragment StoreEntitySet="vTHORApplications">
+          <ScalarProperty Name="AppRoute" ColumnName="AppRoute" />
+          <ScalarProperty Name="AppInstaller" ColumnName="AppInstaller" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="AppDelete" ColumnName="AppDelete" />
+          <ScalarProperty Name="AppDescription" ColumnName="AppDescription" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTHOREmployes">
+      <EntityTypeMapping TypeName="VLTMModel.vTHOREmployes">
+        <MappingFragment StoreEntitySet="vTHOREmployes">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="HolidaysCalendar" ColumnName="HolidaysCalendar" />
+          <ScalarProperty Name="AllowImputation" ColumnName="AllowImputation" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Subdepartment" ColumnName="Subdepartment" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTHORApplicationSections">
+      <EntityTypeMapping TypeName="VLTMModel.vTHORApplicationSections">
+        <MappingFragment StoreEntitySet="vTHORApplicationSections">
+          <ScalarProperty Name="AppSectionDescription" ColumnName="AppSectionDescription" />
+          <ScalarProperty Name="AppSectionName" ColumnName="AppSectionName" />
+          <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+          <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="VLTMModel.Tickets">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ImageFile4" ColumnName="ImageFile4" />
+          <ScalarProperty Name="ImageFile3" ColumnName="ImageFile3" />
+          <ScalarProperty Name="ImageFile2" ColumnName="ImageFile2" />
+          <ScalarProperty Name="ImageFile1" ColumnName="ImageFile1" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AsignedTo" ColumnName="AsignedTo" />
+          <ScalarProperty Name="PriorityAsignedTo" ColumnName="PriorityAsignedTo" />
+          <ScalarProperty Name="PriorityLevel" ColumnName="PriorityLevel" />
+          <ScalarProperty Name="SourceIdentification" ColumnName="SourceIdentification" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+          <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="TicketDate" ColumnName="TicketDate" />
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

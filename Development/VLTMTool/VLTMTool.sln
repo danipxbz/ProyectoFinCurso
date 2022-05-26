@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLTMTool.Model", "..\VLTMTool.Model\VLTMTool.Model.csproj", "{BD72A27E-E315-4B17-B254-D29C211C3653}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1} = {07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLTMTool.Controller", "..\VLTMTool.Controller2\VLTMTool.Controller.csproj", "{607E6A6F-1982-4EAC-B337-6879B8480173}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1} = {07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLTMTool", "..\VLTMTool2\VLTMTool.csproj", "{DC6A3C53-4711-4C99-9F08-58BA7A4FB331}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1} = {07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLTMTool.ViewModel", "VLTMTool.ViewModel\VLTMTool.ViewModel.csproj", "{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD72A27E-E315-4B17-B254-D29C211C3653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD72A27E-E315-4B17-B254-D29C211C3653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD72A27E-E315-4B17-B254-D29C211C3653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD72A27E-E315-4B17-B254-D29C211C3653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607E6A6F-1982-4EAC-B337-6879B8480173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607E6A6F-1982-4EAC-B337-6879B8480173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607E6A6F-1982-4EAC-B337-6879B8480173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607E6A6F-1982-4EAC-B337-6879B8480173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6A3C53-4711-4C99-9F08-58BA7A4FB331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6A3C53-4711-4C99-9F08-58BA7A4FB331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6A3C53-4711-4C99-9F08-58BA7A4FB331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6A3C53-4711-4C99-9F08-58BA7A4FB331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BF9F9A-D3CE-4B33-B1C0-3764A72F77D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63AB7B0E-918C-4D7D-BA69-F3CEF21276B7}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/altertechnology-vl
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ..\\VLTMTool.Model\\VLTMTool.Model.csproj
+		SccProjectName1 = ../VLTMTool.Model
+		SccLocalPath1 = ..\\VLTMTool.Model
+		SccProjectUniqueName2 = ..\\VLTMTool.Controller2\\VLTMTool.Controller.csproj
+		SccProjectName2 = ../VLTMTool.Controller2
+		SccLocalPath2 = ..\\VLTMTool.Controller2
+		SccProjectUniqueName3 = ..\\VLTMTool2\\VLTMTool.csproj
+		SccProjectName3 = ../VLTMTool2
+		SccLocalPath3 = ..\\VLTMTool2
+		SccProjectUniqueName4 = VLTMTool.ViewModel\\VLTMTool.ViewModel.csproj
+		SccProjectName4 = VLTMTool.ViewModel
+		SccLocalPath4 = VLTMTool.ViewModel
+	EndGlobalSection
+EndGlobal
